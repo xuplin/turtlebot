@@ -1,0 +1,11 @@
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [mecanum]"/>
+  <arg name="mecanum_type" default="$(env MECANUM_TYPE)" doc="mecanum type [w210, w350]"/>
+
+  <param name="model" value="$(arg model)"/>
+  <param name="mecanum_type" value="$(arg mecanum_type)"/>
+
+  <!-- turtlebot3_teleop_key already has its own built in velocity smoother -->
+  <node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard"  output="screen">
+  </node>
+</launch>
