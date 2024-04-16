@@ -10,6 +10,8 @@ TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtleb
 
 git/configure on ubuntu22.04 : https://www.youtube.com/watch?v=bc3_FL9zWWs
 
+#
+
 Raspberry Pi login : 
 ```bash
 id : ubuntu
