@@ -6,6 +6,10 @@ YT廠商教學連結：https://www.youtube.com/watch?v=8jEf5CxrYTA&ab_channel=HU
 
 TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
+# github
+
+git/configure on ubuntu22.04 : https://www.youtube.com/watch?v=bc3_FL9zWWs
+
 Raspberry Pi login : 
 ```bash
 id : ubuntu
