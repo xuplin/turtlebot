@@ -8,6 +8,8 @@ TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtleb
 
 # 如何安裝ubuntu20.04
 
+先把ubuntu iso映像檔灌入USB : https://www.youtube.com/watch?v=pls3H-fheV8
+
 install ubuntu 20.04 : https://www.youtube.com/watch?v=YR6qRSE56tE
 
 # github
