@@ -11,7 +11,9 @@ TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtleb
 
 install ubuntu 20.04 到 USB : https://blog.jihongo.com/posts/2020/10/29/install-ubuntu-on-a-usb-drive/
 
-install ros neotic : https://www.youtube.com/watch?v=ZEfh7NxLMxA&t=972s
+install ros neotic : https://www.youtube.com/watch?v=ZEfh7NxLMxA&t=972s 
+
+
 
 # github
 
