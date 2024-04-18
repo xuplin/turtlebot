@@ -6,6 +6,10 @@ YT廠商教學連結：https://www.youtube.com/watch?v=8jEf5CxrYTA&ab_channel=HU
 
 TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
+#如何安裝ubuntu20.04
+
+install ubuntu 20.04 : https://www.youtube.com/watch?v=YR6qRSE56tE
+
 # github
 
 git/configure on ubuntu22.04 : https://www.youtube.com/watch?v=bc3_FL9zWWs
@@ -17,6 +21,7 @@ Raspberry Pi login :
 id : ubuntu
 pwd : turtlebot
 ```
+
 
 
 ## **bashrc file setting**
