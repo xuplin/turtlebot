@@ -7,6 +7,7 @@ YT廠商教學連結：https://www.youtube.com/watch?v=8jEf5CxrYTA&ab_channel=HU
 TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
 
 # 如何安裝ubuntu20.04
+ubuntu20.04 iso : https://releases.ubuntu.com/20.04.6/?_gl=1*npah4o*_gcl_au*NjIxMDcxOTU2LjE3MTM0NDM4Nzg.&_ga=2.156121531.1052672118.1713443847-1533411898.1713443847
 
 先把ubuntu iso映像檔灌入USB : https://www.youtube.com/watch?v=pls3H-fheV8
 
