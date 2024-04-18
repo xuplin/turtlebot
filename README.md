@@ -9,8 +9,10 @@ TurtleBot3 official manul : https://emanual.robotis.com/docs/en/platform/turtleb
 # 如何安裝ubuntu20.04
 
 
-install ubuntu 20.04 : https://www.youtube.com/watch?v=YR6qRSE56tE
+install ubuntu 20.04 到 USB : [https://www.youtube.com/watch?v=YR6qRSE56tE](https://blog.jihongo.com/posts/2020/10/29/install-ubuntu-on-a-usb-drive/)
+
 install ros neotic : https://www.youtube.com/watch?v=ZEfh7NxLMxA&t=972s
+
 # github
 
 git/configure on ubuntu22.04 : https://www.youtube.com/watch?v=bc3_FL9zWWs
