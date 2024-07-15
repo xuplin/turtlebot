@@ -6,6 +6,7 @@ from math import pi
 import argparse
 import os
 from datetime import datetime
+import random
 
 
 
@@ -32,7 +33,7 @@ def stop_and_record_time(velocity_publisher, log_file):
     
     
     # 等待時間(要停多久)
-    rospy.sleep(0.1)
+    rospy.sleep(0.01)
 
 
 
@@ -55,7 +56,7 @@ def move_in_arc(radius,angle,velocity_publisher,log_file,segangle,linear_speed):
     vel_msg.linear.z = 0
     vel_msg.angular.x = 0
     vel_msg.angular.y = 0
-    vel_msg.angular.z = angular_speed
+    vel_msg.angular.z = -angular_speed
 
     #計算總時間
     duration = angle_to_travel / abs(angular_speed)
@@ -119,7 +120,7 @@ def move_back_in_arc(radius, angle, velocity_publisher,log_file,segangle,linear_
     vel_msg.linear.z = 0
     vel_msg.angular.x = 0
     vel_msg.angular.y = 0
-    vel_msg.angular.z = -angular_speed
+    vel_msg.angular.z = angular_speed
     
     duration = angle_to_travel / abs(angular_speed)
     
@@ -165,31 +166,45 @@ def move_back_in_arc(radius, angle, velocity_publisher,log_file,segangle,linear_
 #=============================#
 def move_and_return(radius, angle, repetitions,segangle,linear_speed):
     rospy.init_node('arc_move', anonymous=True)
-    namespace = rospy.get_namespace().strip('/')
-    cmd_vel_topic = f'/{namespace}/cmd_vel'
-    velocity_publisher = rospy.Publisher(cmd_vel_topic, Twist, queue_size=10)
+    velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    nowangle=0
 
     #文件路徑
     log_path = os.path.expanduser('~/6g_log')
     os.makedirs(log_path, exist_ok=True)
-    log_file_path = os.path.join(log_path, 'logfile(3層).txt')
+    log_file_path = os.path.join(log_path, 'logfile2.txt')
 
     with open(log_file_path, 'a') as log_file:
         for i in range(repetitions):
             rospy.loginfo(f"Iteration  {i+1}  of {repetitions}")
             log_file.write(f"Iteration {i+1} of {repetitions}\n")
-            #log_file.flush()
-            move_in_arc(radius, angle, velocity_publisher, log_file,segangle,linear_speed)
+
+            #隨機前進角度
+            possible_angles=[angle for angle in [5,10,15,20,25,30,35,40,45,50,55,60] if angle+ nowangle <= 60]
+            random_forward_angle = random.choice(possible_angles)
+            nowangle+=random_forward_angle
+            rospy.loginfo(f"Generated random angle: {random_forward_angle} degrees")
+            log_file.write(f"Generated random angle: {random_forward_angle} degrees\n")
+            
+            #隨機後退角度
+            move_in_arc(radius, random_forward_angle,velocity_publisher, log_file,segangle,linear_speed)
             rospy.sleep(0.1)#休息
-            move_back_in_arc(radius, angle, velocity_publisher, log_file,segangle,linear_speed)
+
+            possible_angles = [angle for angle in [5,10,15,20,25,30,35,40,45,50,55,60] if angle <= nowangle]
+            random_backward_angle = random.choice(possible_angles)
+            nowangle -= random_backward_angle
+            rospy.loginfo(f"Generated random angle: {random_backward_angle} degrees")
+            log_file.write(f"Generated random angle: {random_backward_angle} degrees\n")
+
+            move_back_in_arc(radius, random_backward_angle, velocity_publisher, log_file,segangle,linear_speed)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Move the robot in an arc.')
-    parser.add_argument('--r', type=float, default=1,required=False, help='Radius of the arc (in meters)') # 圓的半徑
+    parser.add_argument('--r', type=float, default=2,required=False, help='Radius of the arc (in meters)') # 圓的半徑
     parser.add_argument('--g', type=float, default=60,required=False, help='Angle to travel (in degrees)') #總角度
     parser.add_argument('--n', type=int, default=1, required=False, help='Number of repetitions') #來回次數
     parser.add_argument('--c', type=int, default=5, required=False, help='Number of sugment angle') #間隔角度
-    parser.add_argument('--s', type=float, default=0.1, required=False, help='Number of speed') #速度
+    parser.add_argument('--s', type=float, default=0.2, required=False, help='Number of speed') #速度
     args = parser.parse_args()
     try:
         
