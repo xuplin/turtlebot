@@ -161,6 +161,35 @@ IP : 192.168.123.1
    rosrun map_server map_saver -f ~/ros_map/filename
    ```
 
+## **控制多台自走車**
+1. 於**PC端**，執行ROS Master。
+   ```bash
+   roscore
+   ```
+
+2. 於**PC端**，使用指令遠端SBC。
+   ```bash
+   ssh ubuntu@sbc_ip_address     # password: turtlebot
+   ```
+3. 於**PC端**這邊要給第一台tb3_0的名字
+   ```bash
+   ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_bringup turtlebot3_robot.launch multi_robot_name:="tb3_0" set_lidar_frame_id:="tb3_0/base_scan"
+   ```
+4. 於**PC端**這邊要給第二台tb3_1的名字
+   ```bash
+   ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup turtlebot3_robot.launch multi_robot_name:="tb3_1" set_lidar_frame_id:="tb3_1/base_scan"
+   ```
+   剩下以此類推
+5. 於**PC端**，執行遙控範例(測試是否正常）
+   ```bash
+   ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+   ```
+   ```bash
+   ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+   ```
+6. **提醒**：執行各自程式請前面加ROS_NAMESPACE＝自己設定的名稱
+   
+   
 * **Navigation**
 
 1. 於**PC端**，執行Navigation。
